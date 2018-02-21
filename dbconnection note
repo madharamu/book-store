@@ -1,0 +1,34 @@
+// dbconnection.js file
+------------------------
+var mongoose = require('mongoose');
+var db = 'mongodb://localhost/osi';
+mongoose.connect(db);
+
+module.exports;
+
+// app.js file
+------------------------
+// db connection from external dbconnection.js file
+var db = require('./dbconnection');
+
+
+
+We can use an external file for db coneection (dbconnection.js in our case), 
+then remove the connection code in app.js file and replace it with below code which is of one line 
+
+var db = require('./dbconnection');
+
+so now we removed the code which is of three line in app.js and replaces it with just a single line
+
+app.js (internal db connection)
+-------------------------------
+var mongoose = require('mongoose');
+var db = 'mongoose://localhost/osi';
+mongoose.connect(db);
+
+app.js(after using external db connection file)
+------------------------------------------------
+var db = require('./dbconnection');
+
+
+-> Here we are just placing all the three lines of code in other file and in app.js we just calling and using that module of code.
